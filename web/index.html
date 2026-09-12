@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Energy Pilot, démonstration en ligne</title>
+<style>
+  :root {
+    --vert: #1b5e3a;
+    --vert_clair: #e7f0ea;
+    --encre: #1a1a1a;
+    --gris: #666666;
+    --bord: #d9d9d9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--encre);
+    background: #ffffff;
+    line-height: 1.6;
+  }
+  header {
+    background: var(--vert);
+    color: #ffffff;
+    padding: 28px 24px;
+  }
+  header h1 { margin: 0 0 6px 0; font-size: 26px; }
+  header p { margin: 0; color: var(--vert_clair); font-size: 15px; }
+  main { max-width: 980px; margin: 0 auto; padding: 24px; }
+  .intro { font-size: 16px; color: var(--encre); }
+  h2 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--vert);
+    border-bottom: 2px solid var(--vert_clair);
+    padding-bottom: 6px;
+    margin-top: 34px;
+    font-size: 20px;
+  }
+  .panneau {
+    background: #fafafa;
+    border: 1px solid var(--bord);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 16px;
+  }
+  .controle { margin-bottom: 18px; }
+  .controle label {
+    display: block;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+  .valeur { color: var(--vert); font-weight: 700; }
+  input[type=range] { width: 100%; accent-color: var(--vert); }
+  button {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background: var(--vert);
+    border: none;
+    border-radius: 6px;
+    padding: 12px 22px;
+    cursor: pointer;
+  }
+  button:disabled { background: #9bb5a6; cursor: not-allowed; }
+  .grille {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 16px;
+  }
+  .carte {
+    border: 1px solid var(--bord);
+    border-radius: 8px;
+    padding: 16px;
+    background: #ffffff;
+  }
+  .carte h3 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: var(--encre);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--bord); }
+  th { font-family: "Segoe UI", Arial, sans-serif; color: var(--gris); }
+  .gain {
+    background: var(--vert_clair);
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 16px;
+    margin-top: 16px;
+  }
+  .gain strong { color: var(--vert); }
+  .etat {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--gris);
+    font-size: 14px;
+  }
+  .alerte { color: #b03a2e; font-weight: 700; }
+  footer {
+    max-width: 980px; margin: 0 auto; padding: 24px;
+    color: var(--gris); font-size: 13px;
+    border-top: 1px solid var(--bord);
+  }
+  svg text { font-family: "Segoe UI", Arial, sans-serif; }
+  @media (max-width: 760px) { .grille { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Smart Energy Pilot</h1>
+  <p>Prédiction et pilotage de la facture d'électricité d'un bâtiment. Démonstration en ligne.</p>
+</header>
+
+<main>
+  <p class="intro">
+    Cette page exécute le vrai code Python du projet, directement dans votre navigateur.
+    Réglez la pénalité et le pas d'apprentissage, lancez le calcul, et observez les poids
+    estimés, le conditionnement, la convergence, et le plan recommandé pour économiser
+    de l'électricité. Aucun logiciel à installer.
+  </p>
+
+  <h2>Réglages</h2>
+  <div class="panneau">
+    <div class="controle">
+      <label>Pénalité lambda : <span class="valeur" id="val_lambda">0.10</span></label>
+      <input type="range" id="lambda" min="0" max="1" step="0.01" value="0.10">
+    </div>
+    <div class="controle">
+      <label>Pas d'apprentissage alpha : <span class="valeur" id="val_alpha">0.10</span></label>
+      <input type="range" id="alpha" min="0.01" max="1.2" step="0.01" value="0.10">
+    </div>
+    <button id="lancer" disabled>Chargement du moteur Python en cours</button>
+    <p class="etat" id="etat"></p>
+  </div>
+
+  <h2>Résultats</h2>
+  <div class="grille">
+    <div class="carte">
+      <h3>Poids estimés</h3>
+      <table id="table_poids">
+        <thead><tr><th>Variable</th><th>Poids</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="carte">
+      <h3>Conditionnement</h3>
+      <p>Sans pénalité : <span class="valeur" id="kappa0">.</span></p>
+      <p>Avec la pénalité choisie : <span class="valeur" id="kappaL">.</span></p>
+      <p class="etat">Plus il est proche de un, plus l'apprentissage est stable.</p>
+    </div>
+    <div class="carte">
+      <h3>Convergence de la descente de gradient</h3>
+      <div id="graph_conv"></div>
+      <p class="etat" id="conv_etat"></p>
+    </div>
+    <div class="carte">
+      <h3>La pénalité réduit le conditionnement</h3>
+      <div id="graph_kappa"></div>
+    </div>
+  </div>
+
+  <h2>Plan recommandé sur une journée type</h2>
+  <div class="carte">
+    <table id="table_plan">
+      <thead><tr><th>Heure</th><th>Mode</th><th>Consommation prévue (kWh)</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="gain" id="gain"></div>
+  </div>
+</main>
+
+<footer>
+  <p>
+    Projet mené dans le cadre du Programme d'Introduction à l'Intelligence Artificielle
+    de l'Académie des Mathématiques Appliquées. Le code complet et le rapport se trouvent
+    dans le dépôt du projet. Calcul réalisé avec Pyodide et NumPy.
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+<script>
+const codePython = `
+import numpy as np, json
+
+np.random.seed(42)
+n = 200
+heure = np.random.uniform(8, 18, n)
+temperature = 22 + 0.9 * (heure - 8) + np.random.normal(0, 1.5, n)
+occupants = np.random.uniform(0, 40, n)
+Xb = np.column_stack([heure, temperature, occupants])
+moy = Xb.mean(axis=0); ec = Xb.std(axis=0)
+X = (Xb - moy) / ec
+vrai = np.array([4.0, 12.0, 8.0])
+yr = 50.0 + X @ vrai + np.random.normal(0, 2.0, n)
+cmoy = yr.mean(); y = yr - cmoy
+
+def cout(beta, lam):
+    return (1/n)*np.sum((X@beta - y)**2) + lam*np.sum(beta**2)
+
+def gradient(beta, lam):
+    return (2/n)*X.T@(X@beta - y) + 2*lam*beta
+
+def normales(lam):
+    return np.linalg.solve(X.T@X + n*lam*np.eye(3), X.T@y)
+
+def descente(lam, alpha, iters=200):
+    beta = np.zeros(3); hist = []
+    for _ in range(iters):
+        hist.append(float(cout(beta, lam)))
+        beta = beta - alpha*gradient(beta, lam)
+        if not np.all(np.isfinite(beta)):
+            break
+    return hist
+
+def predire(h, t, occ, beta):
+    x = (np.array([h, t, occ]) - moy) / ec
+    return float(cmoy + x@beta)
+
+def etats(h):
+    tp = 22 + 0.9*(h-8); e = [("normal", tp, 35)]
+    if h not in (12, 14):
+        e.append(("economie", tp-2, 20))
+    return e
+
+def compute(lam, alpha):
+    beta = normales(lam)
+    hist = descente(lam, alpha)
+    A = (1/n)*X.T@X
+    vp = np.sort(np.linalg.eigvalsh(A))[::-1]
+    kappa0 = float(vp[0]/vp[-1])
+    kappaL = float((vp[0]+lam)/(vp[-1]+lam))
+    kappa_curve = [[float(l), float((vp[0]+l)/(vp[-1]+l))] for l in np.linspace(0, 1, 40)]
+    heures = [8, 10, 12, 14, 16, 18]; plan = []; topt = 0.0; tnorm = 0.0
+    for h in heures:
+        opts = etats(h)
+        best = min(opts, key=lambda s: predire(h, s[1], s[2], beta))
+        conso = predire(h, best[1], best[2], beta)
+        normal = predire(h, opts[0][1], opts[0][2], beta)
+        topt += conso; tnorm += normal
+        plan.append([h, best[0], round(conso, 1)])
+    conv = [c for c in hist if np.isfinite(c)]
+    diverge = (len(conv) < len(hist)) or (conv[-1] > conv[0]*5)
+    return json.dumps({
+        "beta": [round(float(b), 3) for b in beta],
+        "kappa0": round(kappa0, 2), "kappaL": round(kappaL, 2),
+        "kappa_curve": kappa_curve, "conv": conv[:120], "diverge": bool(diverge),
+        "plan": plan, "total_opt": round(topt, 1), "total_norm": round(tnorm, 1),
+        "eco": round(tnorm-topt, 1), "pct": round(100*(tnorm-topt)/tnorm, 1)
+    })
+`;
+
+const noms = ["Heure", "Température", "Occupants"];
+let pyodide = null;
+
+function courbeSVG(points, options) {
+  const l = 300, h = 180, m = 34;
+  const xs = points.map(p => p[0]), ys = points.map(p => p[1]);
+  const xmin = Math.min(...xs), xmax = Math.max(...xs);
+  const ymin = Math.min(...ys), ymax = Math.max(...ys);
+  const sx = v => m + (l - m - 8) * (xmax === xmin ? 0 : (v - xmin) / (xmax - xmin));
+  const sy = v => (h - m) - (h - m - 8) * (ymax === ymin ? 0 : (v - ymin) / (ymax - ymin));
+  let d = points.map((p, i) => (i === 0 ? "M" : "L") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1)).join(" ");
+  return '<svg viewBox="0 0 ' + l + ' ' + h + '" width="100%">' +
+    '<line x1="' + m + '" y1="8" x2="' + m + '" y2="' + (h - m) + '" stroke="#cccccc"/>' +
+    '<line x1="' + m + '" y1="' + (h - m) + '" x2="' + (l - 8) + '" y2="' + (h - m) + '" stroke="#cccccc"/>' +
+    '<path d="' + d + '" fill="none" stroke="#1b5e3a" stroke-width="2"/>' +
+    '<text x="' + (l / 2) + '" y="' + (h - 6) + '" font-size="11" fill="#666" text-anchor="middle">' + options.x + '</text>' +
+    '<text x="10" y="14" font-size="11" fill="#666">' + options.y + '</text>' +
+    '</svg>';
+}
+
+function afficher(r) {
+  const corpsPoids = document.querySelector("#table_poids tbody");
+  corpsPoids.innerHTML = r.beta.map((b, i) => "<tr><td>" + noms[i] + "</td><td>" + b + "</td></tr>").join("");
+
+  document.getElementById("kappa0").textContent = r.kappa0;
+  document.getElementById("kappaL").textContent = r.kappaL;
+
+  if (r.diverge) {
+    document.getElementById("graph_conv").innerHTML = "";
+    document.getElementById("conv_etat").innerHTML =
+      '<span class="alerte">Le pas est trop grand : l\\'algorithme diverge.</span> Réduisez alpha.';
+  } else {
+    const pts = r.conv.map((c, i) => [i, c]);
+    document.getElementById("graph_conv").innerHTML = courbeSVG(pts, { x: "itération", y: "coût" });
+    document.getElementById("conv_etat").textContent = "Le coût diminue à chaque étape jusqu'au minimum.";
+  }
+
+  document.getElementById("graph_kappa").innerHTML =
+    courbeSVG(r.kappa_curve, { x: "pénalité lambda", y: "conditionnement" });
+
+  const corpsPlan = document.querySelector("#table_plan tbody");
+  corpsPlan.innerHTML = r.plan.map(p =>
+    "<tr><td>" + p[0] + "h</td><td>" + (p[1] === "economie" ? "économie" : "normal") + "</td><td>" + p[2] + "</td></tr>"
+  ).join("");
+
+  document.getElementById("gain").innerHTML =
+    "Sans optimisation : " + r.total_norm + " kWh. Plan recommandé : " + r.total_opt + " kWh. " +
+    "<strong>Économie de " + r.eco + " kWh, soit près de " + r.pct + " pour cent</strong>, à confort égal.";
+}
+
+async function calculer() {
+  const lam = parseFloat(document.getElementById("lambda").value);
+  const alpha = parseFloat(document.getElementById("alpha").value);
+  pyodide.globals.set("lam_in", lam);
+  pyodide.globals.set("alpha_in", alpha);
+  const sortie = pyodide.runPython("compute(lam_in, alpha_in)");
+  afficher(JSON.parse(sortie));
+}
+
+document.getElementById("lambda").addEventListener("input", e => {
+  document.getElementById("val_lambda").textContent = parseFloat(e.target.value).toFixed(2);
+});
+document.getElementById("alpha").addEventListener("input", e => {
+  document.getElementById("val_alpha").textContent = parseFloat(e.target.value).toFixed(2);
+});
+document.getElementById("lancer").addEventListener("click", calculer);
+
+async function demarrer() {
+  const etat = document.getElementById("etat");
+  pyodide = await loadPyodide();
+  etat.textContent = "Chargement de NumPy.";
+  await pyodide.loadPackage("numpy");
+  pyodide.runPython(codePython);
+  const bouton = document.getElementById("lancer");
+  bouton.disabled = false;
+  bouton.textContent = "Lancer le calcul";
+  etat.textContent = "Moteur prêt. Réglez les curseurs puis lancez le calcul.";
+  calculer();
+}
+
+demarrer();
+</script>
+</body>
+</html>
