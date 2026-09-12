@@ -12,7 +12,6 @@
     --encre: #1a1a1a;
     --gris: #666666;
     --bord: #d9d9d9;
-    --rouge: #b03a2e;
   }
   * { box-sizing: border-box; }
   body {
@@ -22,190 +21,120 @@
     background: #ffffff;
     line-height: 1.65;
   }
-  header {
-    background: var(--vert);
-    color: #ffffff;
-    padding: 34px 24px;
-  }
-  .bandeau { max-width: 980px; margin: 0 auto; }
-  header h1 { margin: 0 0 8px 0; font-size: 28px; font-weight: normal; }
+  header { background: var(--vert); color: #ffffff; padding: 32px 20px; }
+  .bandeau { max-width: 960px; margin: 0 auto; }
+  header h1 { margin: 0 0 8px 0; font-size: 27px; font-weight: normal; }
   header p { margin: 0; color: var(--vert_clair); font-size: 16px; }
-  main { max-width: 980px; margin: 0 auto; padding: 8px 24px 24px 24px; }
+  main { max-width: 960px; margin: 0 auto; padding: 8px 20px 24px 20px; }
 
   h2 {
     font-family: "Segoe UI", Arial, sans-serif;
     color: var(--vert);
     border-bottom: 2px solid var(--vert_clair);
     padding-bottom: 8px;
-    margin-top: 44px;
-    margin-bottom: 4px;
+    margin-top: 42px;
+    margin-bottom: 6px;
     font-size: 20px;
   }
   .intro p { font-size: 17px; margin: 18px 0; }
   .intro .conduite { font-weight: bold; }
 
-  .avis {
-    background: var(--vert_pale);
-    border-left: 3px solid var(--vert);
-    padding: 14px 18px;
-    margin-top: 22px;
-    font-size: 15px;
-    color: var(--gris);
-  }
-
   .panneau {
     background: #fafafa;
     border: 1px solid var(--bord);
     border-radius: 8px;
-    padding: 22px;
-    margin-top: 18px;
+    padding: 20px;
+    margin-top: 16px;
   }
-  .controle { margin-bottom: 26px; }
+  .controle { margin-bottom: 24px; }
+  .controle:last-child { margin-bottom: 0; }
   .controle label {
     display: block;
     font-family: "Segoe UI", Arial, sans-serif;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     font-size: 16px;
-  }
-  .technique {
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-weight: normal;
-    color: var(--gris);
-    font-size: 13px;
   }
   .valeur { color: var(--vert); font-weight: 700; }
   .aide {
     font-family: "Segoe UI", Arial, sans-serif;
     font-size: 14px;
     color: var(--gris);
-    margin: 6px 0 0 0;
+    margin: 4px 0 0 0;
   }
-  input[type=range] { width: 100%; accent-color: var(--vert); margin: 4px 0; }
-
-  button {
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-    background: var(--vert);
-    border: none;
-    border-radius: 6px;
-    padding: 13px 26px;
-    cursor: pointer;
-  }
-  button:disabled { background: #9bb5a6; cursor: not-allowed; }
-
-  .etat {
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: var(--gris);
-    font-size: 14px;
-    margin: 12px 0 0 0;
-  }
-  .barre {
-    height: 6px;
-    background: var(--bord);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-top: 10px;
-  }
-  .barre_in {
-    height: 100%;
-    width: 0;
-    background: var(--vert);
-    transition: width 0.35s ease;
-  }
-  .erreur {
-    border: 1px solid var(--rouge);
-    border-left: 3px solid var(--rouge);
-    background: #fdf5f4;
-    border-radius: 6px;
-    padding: 16px 18px;
-    margin-top: 16px;
-    font-size: 15px;
-  }
-  .erreur_titre {
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-weight: 700;
-    color: var(--rouge);
-    margin: 0 0 8px 0;
-  }
-  .erreur p { margin: 0 0 8px 0; }
-  .erreur pre {
-    font-family: Consolas, "Courier New", monospace;
-    font-size: 12.5px;
-    background: #ffffff;
-    border: 1px solid var(--bord);
-    border-radius: 4px;
-    padding: 10px;
-    margin: 8px 0 0 0;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: var(--encre);
+  input[type=range] {
+    width: 100%;
+    accent-color: var(--vert);
+    margin: 8px 0 2px 0;
+    height: 26px;
   }
 
-  .grille {
+  .vedette {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    gap: 16px;
     margin-top: 18px;
   }
+  .bloc_vedette {
+    background: var(--vert_clair);
+    border-radius: 8px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .bloc_vedette.sobre { background: var(--vert_pale); border: 1px solid var(--vert_clair); }
+  .etiquette {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    color: var(--gris);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .chiffre {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--vert);
+    line-height: 1.15;
+    margin-top: 6px;
+  }
+  .unite { font-size: 20px; font-weight: 600; }
+  .sous_chiffre {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--vert);
+    margin-top: 4px;
+  }
+  .precision { font-size: 14.5px; color: var(--gris); margin-top: 10px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--bord); }
+  th {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--gris);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  td.nombre { text-align: right; white-space: nowrap; }
+  th.nombre { text-align: right; }
+
   .carte {
     border: 1px solid var(--bord);
     border-radius: 8px;
     padding: 18px;
     background: #ffffff;
+    margin-top: 16px;
   }
-  .carte h3 {
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin: 0 0 4px 0;
-    font-size: 17px;
-    color: var(--encre);
-  }
-  .carte .technique { display: block; margin-bottom: 12px; }
   .lecture {
-    font-size: 15px;
+    font-size: 15.5px;
     background: var(--vert_pale);
     border-radius: 6px;
-    padding: 10px 12px;
-    margin: 12px 0 0 0;
+    padding: 12px 14px;
+    margin: 14px 0 0 0;
   }
   .lecture strong { color: var(--vert); }
-
-  table { width: 100%; border-collapse: collapse; font-size: 15px; }
-  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--bord); }
-  th { font-family: "Segoe UI", Arial, sans-serif; color: var(--gris); font-size: 13px; font-weight: 600; }
-
-  .verdict {
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--vert);
-    margin: 2px 0 10px 0;
-  }
-
-  .bilan {
-    background: var(--vert_clair);
-    border-radius: 8px;
-    padding: 24px;
-    margin-top: 18px;
-    text-align: center;
-  }
-  .bilan_chiffre {
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: var(--vert);
-    line-height: 1.2;
-  }
-  .bilan_pct {
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--vert);
-    margin-top: 2px;
-  }
-  .bilan_detail { font-size: 15px; color: var(--gris); margin-top: 12px; }
 
   ol.etapes { padding-left: 0; list-style: none; counter-reset: pas; margin-top: 18px; }
   ol.etapes li {
@@ -224,32 +153,65 @@
     color: #ffffff;
     border-radius: 50%;
     font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 16px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
   }
-  ol.etapes h3 {
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 16px;
-    margin: 4px 0 4px 0;
-  }
+  ol.etapes h3 { font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; margin: 4px 0 4px 0; }
   ol.etapes p { margin: 0; font-size: 15px; }
 
-  ul.liens { list-style: none; padding: 0; margin-top: 18px; }
-  ul.liens li { margin-bottom: 14px; font-size: 15px; }
+  details {
+    border: 1px solid var(--bord);
+    border-radius: 8px;
+    margin-top: 18px;
+    background: #ffffff;
+  }
+  details summary {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--vert);
+    padding: 15px 18px;
+    cursor: pointer;
+    list-style: none;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: "+";
+    float: right;
+    font-size: 19px;
+    line-height: 1;
+    color: var(--vert);
+  }
+  details[open] summary::after { content: "\2212"; }
+  details[open] summary { border-bottom: 1px solid var(--bord); }
+  .contenu_replie { padding: 18px; }
+
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .sous_titre {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+  }
+
+  ul.liens { list-style: none; padding: 0; margin-top: 16px; }
+  ul.liens li { margin-bottom: 14px; font-size: 15.5px; }
   a { color: var(--vert); }
 
   footer {
-    max-width: 980px; margin: 0 auto; padding: 24px;
+    max-width: 960px; margin: 0 auto; padding: 24px 20px;
     color: var(--gris); font-size: 13.5px;
     border-top: 1px solid var(--bord);
   }
   svg text { font-family: "Segoe UI", Arial, sans-serif; }
-  @media (max-width: 760px) {
-    .grille { grid-template-columns: 1fr; }
-    .bilan_chiffre { font-size: 32px; }
+
+  @media (max-width: 700px) {
+    header h1 { font-size: 23px; }
+    .vedette { grid-template-columns: 1fr; }
+    .duo { grid-template-columns: 1fr; }
+    .chiffre { font-size: 36px; }
+    main { padding: 8px 16px 20px 16px; }
+    th, td { padding: 8px 5px; font-size: 14px; }
   }
 </style>
 </head>
@@ -265,118 +227,89 @@
   <section class="intro">
     <p>
       Le gérant d'un immeuble de bureaux voit sa facture d'électricité grimper mois après mois.
-      Il ignore ce qui la fait vraiment monter : l'heure de la journée, la température, le nombre
-      de personnes présentes. Sans cette réponse, impossible de savoir où agir.
+      Il ignore ce qui la fait vraiment monter : la chaleur extérieure, le nombre de personnes
+      présentes, ou l'heure de la journée. Sans cette réponse, impossible de savoir où agir.
     </p>
     <p>
-      Cet outil part de relevés de consommation réels. Il mesure le poids de chaque facteur sur
-      la facture, puis construit un plan de fonctionnement heure par heure qui réduit la
-      consommation sans changer le confort des occupants.
+      Cet outil a appris la relation entre ces facteurs et la consommation, à partir de deux cents
+      relevés. Il prévoit la facture de votre journée, puis construit un plan heure par heure qui
+      réduit la consommation sans sacrifier le confort des occupants.
     </p>
     <p class="conduite">
-      Pour l'essayer, réglez les deux curseurs ci-dessous, lancez le calcul, puis lisez les résultats.
-    </p>
-    <p class="avis">
-      Tout le calcul se déroule directement dans votre navigateur : aucune donnée n'est envoyée
-      sur un serveur. Le moteur de calcul doit être téléchargé au premier affichage, ce qui prend
-      quelques secondes.
+      Décrivez votre journée avec les trois curseurs ci-dessous. Tout se recalcule immédiatement.
     </p>
   </section>
 
-  <h2>Réglages</h2>
+  <h2>Votre situation</h2>
   <div class="panneau">
     <div class="controle">
-      <label for="lambda">
-        Stabilité du modèle : <span class="valeur" id="val_lambda">0.10</span>
-        <span class="technique">terme technique : pénalité lambda</span>
+      <label for="temperature">
+        Température extérieure prévue : <span class="valeur" id="val_temperature">32 degrés</span>
       </label>
-      <input type="range" id="lambda" min="0" max="1" step="0.01" value="0.10">
+      <input type="range" id="temperature" min="25" max="40" step="1" value="32">
       <p class="aide">
-        Vers la droite, le modèle devient plus prudent et le calcul plus facile, mais il colle
-        moins finement aux données. Vous verrez la difficulté du calcul baisser et les poids
-        se resserrer.
+        La chaleur attendue en fin de journée. Plus elle monte, plus la climatisation consomme.
       </p>
     </div>
 
     <div class="controle">
-      <label for="alpha">
-        Vitesse d'apprentissage : <span class="valeur" id="val_alpha">0.10</span>
-        <span class="technique">terme technique : pas d'apprentissage alpha</span>
+      <label for="personnes">
+        Personnes attendues dans le bâtiment : <span class="valeur" id="val_personnes">20</span>
       </label>
-      <input type="range" id="alpha" min="0.01" max="1.2" step="0.01" value="0.10">
+      <input type="range" id="personnes" min="5" max="40" step="1" value="20">
       <p class="aide">
-        C'est la taille des pas que fait l'algorithme pour trouver la solution. Trop petits, il
-        avance lentement. Trop grands, au delà d'environ 0.80, il s'emballe et n'aboutit plus.
+        Chaque personne présente apporte de la chaleur et fait fonctionner des équipements.
       </p>
     </div>
 
-    <button id="lancer" disabled>Préparation du moteur de calcul</button>
-    <p class="etat" id="etat">Démarrage.</p>
-    <div class="barre"><div class="barre_in" id="barre_in"></div></div>
-
-    <div class="erreur" id="erreur" hidden>
-      <p class="erreur_titre">Le moteur de calcul n'a pas pu démarrer.</p>
-      <p id="erreur_msg"></p>
-      <p>Vérifiez votre connexion, puis rechargez la page. Détail technique :</p>
-      <pre id="erreur_detail"></pre>
+    <div class="controle">
+      <label for="confort">
+        Niveau de confort souhaité : <span class="valeur" id="val_confort">Équilibré</span>
+      </label>
+      <input type="range" id="confort" min="0" max="3" step="1" value="1">
+      <p class="aide" id="aide_confort"></p>
     </div>
   </div>
 
-  <h2>Résultats</h2>
-  <div class="grille">
-    <div class="carte">
-      <h3>Ce qui fait varier la facture</h3>
-      <span class="technique">terme technique : poids estimés du modèle</span>
-      <table id="table_poids">
-        <thead><tr><th>Facteur</th><th>Poids</th><th>Effet</th></tr></thead>
-        <tbody></tbody>
-      </table>
-      <p class="lecture" id="lecture_poids">En attente du calcul.</p>
+  <h2>Ce que vous paierez, et ce que vous pouvez gagner</h2>
+  <div class="vedette">
+    <div class="bloc_vedette sobre">
+      <div class="etiquette">Facture prévue sans rien changer</div>
+      <div class="chiffre"><span id="facture_normale">.</span> <span class="unite">kWh</span></div>
+      <p class="precision" id="precision_normale"></p>
     </div>
-
-    <div class="carte">
-      <h3>Difficulté du calcul</h3>
-      <span class="technique">terme technique : conditionnement</span>
-      <p class="verdict" id="verdict_kappa">En attente</p>
-      <table>
-        <tbody>
-          <tr><td>Sans stabilisation</td><td class="valeur" id="kappa0">.</td></tr>
-          <tr><td>Avec votre réglage</td><td class="valeur" id="kappaL">.</td></tr>
-        </tbody>
-      </table>
-      <p class="lecture" id="lecture_kappa">
-        Plus ce nombre est proche de un, plus le calcul est fiable et rapide.
-      </p>
-    </div>
-
-    <div class="carte">
-      <h3>Progression du calcul</h3>
-      <span class="technique">terme technique : convergence de la descente de gradient</span>
-      <div id="graph_conv"></div>
-      <p class="lecture" id="conv_etat">En attente du calcul.</p>
-    </div>
-
-    <div class="carte">
-      <h3>Effet de la stabilité sur la difficulté</h3>
-      <span class="technique">terme technique : conditionnement en fonction de lambda</span>
-      <div id="graph_kappa"></div>
-      <p class="lecture">
-        La courbe descend : plus on stabilise le modèle, plus le calcul devient facile.
-      </p>
+    <div class="bloc_vedette">
+      <div class="etiquette">Économie possible</div>
+      <div class="chiffre"><span id="economie_kwh">.</span> <span class="unite">kWh</span></div>
+      <div class="sous_chiffre" id="economie_pct">.</div>
+      <p class="precision" id="precision_economie"></p>
     </div>
   </div>
 
-  <h2>Plan recommandé sur une journée type</h2>
+  <h2>Votre journée heure par heure</h2>
   <div class="carte">
     <table id="table_plan">
-      <thead><tr><th>Heure</th><th>Fonctionnement conseillé</th><th>Consommation prévue</th></tr></thead>
+      <thead>
+        <tr>
+          <th>Heure</th>
+          <th>Ce qu'il faut faire</th>
+          <th class="nombre">Consommation prévue</th>
+        </tr>
+      </thead>
       <tbody></tbody>
     </table>
-    <div class="bilan">
-      <div class="bilan_chiffre" id="bilan_kwh">.</div>
-      <div class="bilan_pct" id="bilan_pct">.</div>
-      <p class="bilan_detail" id="bilan_detail">En attente du calcul.</p>
-    </div>
+    <p class="lecture" id="lecture_plan"></p>
+  </div>
+
+  <h2>Ce qui fait varier votre facture</h2>
+  <div class="carte">
+    <table id="table_facteurs">
+      <thead>
+        <tr><th>Facteur</th><th>Effet sur la journée</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p class="lecture" id="lecture_facteurs"></p>
   </div>
 
   <h2>Comment ça marche</h2>
@@ -408,10 +341,100 @@
       <h3>Recommander un plan</h3>
       <p>
         Pour chaque heure de la journée, l'outil compare les fonctionnements possibles, retient
-        celui qui consomme le moins à confort équivalent, et chiffre l'économie obtenue.
+        celui qui consomme le moins au niveau de confort demandé, et chiffre l'économie obtenue.
       </p>
     </li>
   </ol>
+
+  <details id="avances">
+    <summary>Réglages avancés</summary>
+    <div class="contenu_replie">
+      <p class="aide" style="margin-bottom:18px;">
+        Ces deux réglages pilotent la méthode de calcul elle même. Ils ne changent pas votre
+        situation, seulement la façon dont le modèle est estimé.
+      </p>
+
+      <div class="controle">
+        <label for="lambda">
+          Stabilité du modèle : <span class="valeur" id="val_lambda">0,10</span>
+        </label>
+        <input type="range" id="lambda" min="0" max="1" step="0.01" value="0.10">
+        <p class="aide">
+          Vers la droite, le modèle devient plus prudent et le calcul plus facile, mais il colle
+          moins finement aux données.
+        </p>
+      </div>
+
+      <div class="controle">
+        <label for="alpha">
+          Vitesse d'apprentissage : <span class="valeur" id="val_alpha">0,10</span>
+        </label>
+        <input type="range" id="alpha" min="0.01" max="1.2" step="0.01" value="0.10">
+        <p class="aide">
+          Taille des pas de l'algorithme. Trop grands, au delà d'environ 0,80, il s'emballe
+          et n'aboutit plus.
+        </p>
+      </div>
+
+      <div class="duo" style="margin-top:22px;">
+        <div>
+          <p class="sous_titre">Poids appris par le modèle</p>
+          <table id="table_poids">
+            <thead><tr><th>Facteur</th><th class="nombre">Poids</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <p class="aide" style="margin-top:8px;">
+            Valeurs comparables entre elles, les données ayant été mises à la même échelle.
+          </p>
+        </div>
+        <div>
+          <p class="sous_titre">Difficulté du calcul</p>
+          <table>
+            <tbody>
+              <tr><td>Sans stabilisation</td><td class="nombre valeur" id="kappa0">.</td></tr>
+              <tr><td>Avec votre réglage</td><td class="nombre valeur" id="kappaL">.</td></tr>
+              <tr><td>Appréciation</td><td class="nombre valeur" id="verdict_kappa">.</td></tr>
+            </tbody>
+          </table>
+          <p class="aide" id="lecture_kappa" style="margin-top:8px;"></p>
+        </div>
+      </div>
+
+      <div class="duo" style="margin-top:22px;">
+        <div>
+          <p class="sous_titre">Progression du calcul</p>
+          <div id="graph_conv"></div>
+          <p class="aide" id="conv_etat"></p>
+        </div>
+        <div>
+          <p class="sous_titre">Effet de la stabilité sur la difficulté</p>
+          <div id="graph_kappa"></div>
+          <p class="aide">
+            La courbe descend : plus on stabilise le modèle, plus le calcul devient facile.
+          </p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details id="lexique">
+    <summary>Correspondance avec les termes techniques</summary>
+    <div class="contenu_replie">
+      <table>
+        <thead><tr><th>Mot employé sur cette page</th><th>Terme scientifique</th></tr></thead>
+        <tbody>
+          <tr><td>Stabilité du modèle</td><td>Pénalité de régularisation lambda, dite régression ridge</td></tr>
+          <tr><td>Vitesse d'apprentissage</td><td>Pas d'apprentissage alpha de la descente de gradient</td></tr>
+          <tr><td>Difficulté du calcul</td><td>Conditionnement kappa de la matrice des données</td></tr>
+          <tr><td>Poids appris par le modèle</td><td>Coefficients estimés bêta de la régression</td></tr>
+          <tr><td>Progression du calcul</td><td>Convergence de la fonction de coût</td></tr>
+          <tr><td>Facture prévue</td><td>Prédiction du modèle linéaire</td></tr>
+          <tr><td>Plan recommandé</td><td>Chemin de coût minimal dans le graphe des états</td></tr>
+          <tr><td>Mise à la même échelle</td><td>Standardisation des variables, moyenne nulle et écart type unité</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
 
   <h2>Pour aller plus loin</h2>
   <ul class="liens">
@@ -429,256 +452,418 @@
 <footer>
   <p>
     Projet mené dans le cadre du Programme d'Introduction à l'Intelligence Artificielle
-    de l'Académie des Mathématiques Appliquées. Calcul réalisé avec Pyodide et NumPy,
-    exécuté dans le navigateur.
+    de l'Académie des Mathématiques Appliquées. Tous les calculs sont effectués dans votre
+    navigateur, sans connexion réseau et sans envoi de données.
   </p>
 </footer>
 
 <script>
-const codePython = `
-import numpy as np, json
+"use strict";
 
-np.random.seed(42)
-n = 200
-heure = np.random.uniform(8, 18, n)
-temperature = 22 + 0.9 * (heure - 8) + np.random.normal(0, 1.5, n)
-occupants = np.random.uniform(0, 40, n)
-Xb = np.column_stack([heure, temperature, occupants])
-moy = Xb.mean(axis=0); ec = Xb.std(axis=0)
-X = (Xb - moy) / ec
-vrai = np.array([4.0, 12.0, 8.0])
-yr = 50.0 + X @ vrai + np.random.normal(0, 2.0, n)
-cmoy = yr.mean(); y = yr - cmoy
-
-def cout(beta, lam):
-    return (1/n)*np.sum((X@beta - y)**2) + lam*np.sum(beta**2)
-
-def gradient(beta, lam):
-    return (2/n)*X.T@(X@beta - y) + 2*lam*beta
-
-def normales(lam):
-    return np.linalg.solve(X.T@X + n*lam*np.eye(3), X.T@y)
-
-def descente(lam, alpha, iters=200):
-    beta = np.zeros(3); hist = []
-    for _ in range(iters):
-        hist.append(float(cout(beta, lam)))
-        beta = beta - alpha*gradient(beta, lam)
-        if not np.all(np.isfinite(beta)):
-            break
-    return hist
-
-def predire(h, t, occ, beta):
-    x = (np.array([h, t, occ]) - moy) / ec
-    return float(cmoy + x@beta)
-
-def etats(h):
-    tp = 22 + 0.9*(h-8); e = [("normal", tp, 35)]
-    if h not in (12, 14):
-        e.append(("economie", tp-2, 20))
-    return e
-
-def compute(lam, alpha):
-    beta = normales(lam)
-    hist = descente(lam, alpha)
-    A = (1/n)*X.T@X
-    vp = np.sort(np.linalg.eigvalsh(A))[::-1]
-    kappa0 = float(vp[0]/vp[-1])
-    kappaL = float((vp[0]+lam)/(vp[-1]+lam))
-    kappa_curve = [[float(l), float((vp[0]+l)/(vp[-1]+l))] for l in np.linspace(0, 1, 40)]
-    heures = [8, 10, 12, 14, 16, 18]; plan = []; topt = 0.0; tnorm = 0.0
-    for h in heures:
-        opts = etats(h)
-        best = min(opts, key=lambda s: predire(h, s[1], s[2], beta))
-        conso = predire(h, best[1], best[2], beta)
-        normal = predire(h, opts[0][1], opts[0][2], beta)
-        topt += conso; tnorm += normal
-        plan.append([h, best[0], round(conso, 1)])
-    conv = [c for c in hist if np.isfinite(c)]
-    diverge = (len(conv) < len(hist)) or (conv[-1] > conv[0]*5)
-    return json.dumps({
-        "beta": [round(float(b), 3) for b in beta],
-        "kappa0": round(kappa0, 2), "kappaL": round(kappaL, 2),
-        "kappa_curve": kappa_curve, "conv": conv[:120], "diverge": bool(diverge),
-        "plan": plan, "total_opt": round(topt, 1), "total_norm": round(tnorm, 1),
-        "eco": round(tnorm-topt, 1), "pct": round(100*(tnorm-topt)/tnorm, 1)
-    })
-`;
-
-// Une seule source de vérité pour la version : le script et l'indexURL ne peuvent pas diverger.
-const VERSION_PYODIDE = "0.26.4";
-const BASE_PYODIDE = "https://cdn.jsdelivr.net/pyodide/v" + VERSION_PYODIDE + "/full/";
-
-const noms = ["Heure", "Température", "Occupants"];
-const nomsLongs = ["l'heure de la journée", "la température", "le nombre d'occupants"];
-let pyodide = null;
-
-const elEtat = document.getElementById("etat");
-const elBarre = document.getElementById("barre_in");
-const elErreur = document.getElementById("erreur");
-const elBouton = document.getElementById("lancer");
-
-function progresser(texte, pourcent) {
-  elEtat.textContent = texte;
-  elBarre.style.width = pourcent + "%";
+/* ============================================================
+   1. Generateur pseudo aleatoire a graine fixe
+   ============================================================ */
+function generateur(graine) {
+  let a = graine >>> 0;
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function tirages(graine) {
+  const u = generateur(graine);
+  return {
+    uniforme: function (a, b) { return a + (b - a) * u(); },
+    normale: function (mu, sigma) {
+      let u1 = 0;
+      while (u1 === 0) { u1 = u(); }
+      const u2 = u();
+      return mu + sigma * Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+    }
+  };
 }
 
-function signalerErreur(message, detail) {
-  elEtat.textContent = "Démarrage interrompu.";
-  elBarre.style.width = "0";
-  document.getElementById("erreur_msg").textContent = message;
-  document.getElementById("erreur_detail").textContent = detail;
-  elErreur.hidden = false;
-  elBouton.textContent = "Moteur indisponible";
-  elBouton.disabled = true;
-}
+/* ============================================================
+   2. Generation des donnees, fidele a src/data.py
+   ============================================================ */
+const VRAIS_POIDS = [4.0, 12.0, 8.0];
+const CONSOMMATION_BASE = 50.0;
+const GRAINE = 179;
 
-function chargerScript(url) {
-  return new Promise(function (resolve, reject) {
-    const balise = document.createElement("script");
-    balise.src = url;
-    balise.onload = function () { resolve(); };
-    balise.onerror = function () {
-      reject(new Error("Téléchargement impossible depuis " + url));
-    };
-    document.head.appendChild(balise);
+function genererDonnees(n, graine) {
+  const t = tirages(graine);
+  const heure = [], bruitTemperature = [], occupants = [], bruitConso = [];
+  for (let i = 0; i < n; i++) { heure.push(t.uniforme(8, 18)); }
+  for (let i = 0; i < n; i++) { bruitTemperature.push(t.normale(0, 1.5)); }
+  for (let i = 0; i < n; i++) { occupants.push(t.uniforme(0, 40)); }
+  for (let i = 0; i < n; i++) { bruitConso.push(t.normale(0, 2.0)); }
+
+  const brut = [];
+  for (let i = 0; i < n; i++) {
+    brut.push([heure[i], 22 + 0.9 * (heure[i] - 8) + bruitTemperature[i], occupants[i]]);
+  }
+
+  const moyennes = [0, 0, 0], ecarts = [0, 0, 0];
+  for (let j = 0; j < 3; j++) {
+    let somme = 0;
+    for (let i = 0; i < n; i++) { somme += brut[i][j]; }
+    moyennes[j] = somme / n;
+    let variance = 0;
+    for (let i = 0; i < n; i++) { variance += Math.pow(brut[i][j] - moyennes[j], 2); }
+    ecarts[j] = Math.sqrt(variance / n);
+  }
+
+  const X = brut.map(function (ligne) {
+    return ligne.map(function (v, j) { return (v - moyennes[j]) / ecarts[j]; });
   });
+
+  const reelle = X.map(function (r, i) {
+    return CONSOMMATION_BASE + r[0] * VRAIS_POIDS[0] + r[1] * VRAIS_POIDS[1]
+      + r[2] * VRAIS_POIDS[2] + bruitConso[i];
+  });
+  let somme = 0;
+  for (let i = 0; i < n; i++) { somme += reelle[i]; }
+  const consommationMoyenne = somme / n;
+  const y = reelle.map(function (v) { return v - consommationMoyenne; });
+
+  return { X: X, y: y, moyennes: moyennes, ecarts: ecarts, consommationMoyenne: consommationMoyenne, n: n };
+}
+
+/* ============================================================
+   3. Algebre : Gram, elimination de Gauss avec pivot, Jacobi
+   ============================================================ */
+function matriceGram(X) {
+  const p = X[0].length;
+  const A = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+  for (let j = 0; j < p; j++) {
+    for (let k = 0; k < p; k++) {
+      let s = 0;
+      for (let i = 0; i < X.length; i++) { s += X[i][j] * X[i][k]; }
+      A[j][k] = s;
+    }
+  }
+  return A;
+}
+function produitXty(X, y) {
+  const p = X[0].length, b = [0, 0, 0];
+  for (let j = 0; j < p; j++) {
+    let s = 0;
+    for (let i = 0; i < X.length; i++) { s += X[i][j] * y[i]; }
+    b[j] = s;
+  }
+  return b;
+}
+function resoudreGauss(Ain, bin) {
+  const p = bin.length;
+  const A = Ain.map(function (r, i) { return r.slice().concat([bin[i]]); });
+  for (let c = 0; c < p; c++) {
+    let pivot = c;
+    for (let r = c + 1; r < p; r++) {
+      if (Math.abs(A[r][c]) > Math.abs(A[pivot][c])) { pivot = r; }
+    }
+    const echange = A[c]; A[c] = A[pivot]; A[pivot] = echange;
+    for (let r = c + 1; r < p; r++) {
+      const facteur = A[r][c] / A[c][c];
+      for (let k = c; k <= p; k++) { A[r][k] -= facteur * A[c][k]; }
+    }
+  }
+  const x = new Array(p).fill(0);
+  for (let r = p - 1; r >= 0; r--) {
+    let s = A[r][p];
+    for (let k = r + 1; k < p; k++) { s -= A[r][k] * x[k]; }
+    x[r] = s / A[r][r];
+  }
+  return x;
+}
+function valeursPropresJacobi(matrice) {
+  const p = matrice.length;
+  const A = matrice.map(function (r) { return r.slice(); });
+  for (let balayage = 0; balayage < 100; balayage++) {
+    let horsDiagonale = 0;
+    for (let i = 0; i < p; i++) {
+      for (let j = i + 1; j < p; j++) { horsDiagonale += A[i][j] * A[i][j]; }
+    }
+    if (horsDiagonale < 1e-18) { break; }
+    for (let i = 0; i < p; i++) {
+      for (let j = i + 1; j < p; j++) {
+        if (Math.abs(A[i][j]) < 1e-18) { continue; }
+        const theta = (A[j][j] - A[i][i]) / (2 * A[i][j]);
+        const signe = theta >= 0 ? 1 : -1;
+        const t = signe / (Math.abs(theta) + Math.sqrt(theta * theta + 1));
+        const c = 1 / Math.sqrt(t * t + 1), s = t * c;
+        for (let k = 0; k < p; k++) {
+          const aik = A[i][k], ajk = A[j][k];
+          A[i][k] = c * aik - s * ajk;
+          A[j][k] = s * aik + c * ajk;
+        }
+        for (let k = 0; k < p; k++) {
+          const aki = A[k][i], akj = A[k][j];
+          A[k][i] = c * aki - s * akj;
+          A[k][j] = s * aki + c * akj;
+        }
+      }
+    }
+  }
+  return A.map(function (r, i) { return r[i]; }).sort(function (a, b) { return b - a; });
+}
+
+/* ============================================================
+   4. Modele, fidele a src/model.py
+   ============================================================ */
+function equationsNormales(d, lam) {
+  const A = matriceGram(d.X);
+  for (let j = 0; j < 3; j++) { A[j][j] += d.n * lam; }
+  return resoudreGauss(A, produitXty(d.X, d.y));
+}
+function cout(d, beta, lam) {
+  let s = 0;
+  for (let i = 0; i < d.n; i++) {
+    const e = d.X[i][0] * beta[0] + d.X[i][1] * beta[1] + d.X[i][2] * beta[2] - d.y[i];
+    s += e * e;
+  }
+  return s / d.n + lam * (beta[0] * beta[0] + beta[1] * beta[1] + beta[2] * beta[2]);
+}
+function gradient(d, beta, lam) {
+  const g = [0, 0, 0];
+  for (let i = 0; i < d.n; i++) {
+    const e = d.X[i][0] * beta[0] + d.X[i][1] * beta[1] + d.X[i][2] * beta[2] - d.y[i];
+    for (let j = 0; j < 3; j++) { g[j] += (2 / d.n) * d.X[i][j] * e; }
+  }
+  for (let j = 0; j < 3; j++) { g[j] += 2 * lam * beta[j]; }
+  return g;
+}
+function descenteGradient(d, lam, alpha, iterations) {
+  let beta = [0, 0, 0];
+  const historique = [];
+  for (let k = 0; k < iterations; k++) {
+    historique.push(cout(d, beta, lam));
+    const g = gradient(d, beta, lam);
+    beta = beta.map(function (b, j) { return b - alpha * g[j]; });
+    if (!beta.every(Number.isFinite)) { break; }
+  }
+  return historique;
+}
+
+/* ============================================================
+   5. Plan recommande, fidele a src/graph.py
+   ============================================================ */
+const HEURES = [8, 10, 12, 14, 16, 18];
+const CONFORTS = [
+  {
+    nom: "Économique", recul: 4.0, facteur: 0.50, protegees: [],
+    aide: "Climatisation nettement réduite toute la journée. Économie maximale, confort réduit."
+  },
+  {
+    nom: "Équilibré", recul: 3.3, facteur: 0.64, protegees: [12, 14],
+    aide: "Effort d'économie sauf aux heures de forte présence, midi et quatorze heures."
+  },
+  {
+    nom: "Confortable", recul: 2.0, facteur: 0.78, protegees: [12, 14],
+    aide: "Effort modéré. Le confort reste proche de la normale toute la journée."
+  },
+  {
+    nom: "Très confortable", recul: 1.0, facteur: 0.90, protegees: [12, 14, 16],
+    aide: "Confort prioritaire. L'économie devient faible, mais rien n'est sacrifié."
+  }
+];
+
+function predire(d, h, temperature, occupants, beta) {
+  const x0 = (h - d.moyennes[0]) / d.ecarts[0];
+  const x1 = (temperature - d.moyennes[1]) / d.ecarts[1];
+  const x2 = (occupants - d.moyennes[2]) / d.ecarts[2];
+  return d.consommationMoyenne + x0 * beta[0] + x1 * beta[1] + x2 * beta[2];
+}
+function profilTemperature(h, temperatureExterieure) {
+  return temperatureExterieure - 9 + 0.9 * (h - 8);
+}
+function planRecommande(d, beta, temperatureExterieure, personnes, indiceConfort) {
+  const c = CONFORTS[indiceConfort];
+  const lignes = [];
+  let totalOptimal = 0, totalNormal = 0;
+  for (let i = 0; i < HEURES.length; i++) {
+    const h = HEURES[i];
+    const temperature = profilTemperature(h, temperatureExterieure);
+    const consoNormale = predire(d, h, temperature, personnes, beta);
+    let mode = "normal", conso = consoNormale;
+    if (c.protegees.indexOf(h) === -1) {
+      const consoEconomie = predire(d, h, temperature - c.recul, personnes * c.facteur, beta);
+      if (consoEconomie < conso) { mode = "economie"; conso = consoEconomie; }
+    }
+    totalOptimal += conso;
+    totalNormal += consoNormale;
+    lignes.push({ heure: h, mode: mode, conso: conso });
+  }
+  return {
+    lignes: lignes,
+    totalNormal: totalNormal,
+    totalOptimal: totalOptimal,
+    economie: totalNormal - totalOptimal,
+    pourcent: totalNormal > 0 ? 100 * (totalNormal - totalOptimal) / totalNormal : 0
+  };
+}
+
+/* ============================================================
+   6. Affichage
+   ============================================================ */
+const NOMS = ["L'heure de la journée", "La température extérieure", "Le nombre de personnes"];
+
+function nb(valeur, decimales) {
+  const d = decimales === undefined ? 1 : decimales;
+  return valeur.toFixed(d).replace(".", ",");
 }
 
 function courbeSVG(points, options) {
-  const l = 300, h = 180, m = 34;
-  const xs = points.map(p => p[0]), ys = points.map(p => p[1]);
-  const xmin = Math.min(...xs), xmax = Math.max(...xs);
-  const ymin = Math.min(...ys), ymax = Math.max(...ys);
-  const sx = v => m + (l - m - 8) * (xmax === xmin ? 0 : (v - xmin) / (xmax - xmin));
-  const sy = v => (h - m) - (h - m - 8) * (ymax === ymin ? 0 : (v - ymin) / (ymax - ymin));
-  let d = points.map((p, i) => (i === 0 ? "M" : "L") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1)).join(" ");
-  return '<svg viewBox="0 0 ' + l + ' ' + h + '" width="100%">' +
-    '<line x1="' + m + '" y1="8" x2="' + m + '" y2="' + (h - m) + '" stroke="#cccccc"/>' +
-    '<line x1="' + m + '" y1="' + (h - m) + '" x2="' + (l - 8) + '" y2="' + (h - m) + '" stroke="#cccccc"/>' +
-    '<path d="' + d + '" fill="none" stroke="#1b5e3a" stroke-width="2"/>' +
-    '<text x="' + (l / 2) + '" y="' + (h - 6) + '" font-size="11" fill="#666" text-anchor="middle">' + options.x + '</text>' +
-    '<text x="10" y="14" font-size="11" fill="#666">' + options.y + '</text>' +
+  const largeur = 300, hauteur = 180, marge = 34;
+  const xs = points.map(function (p) { return p[0]; });
+  const ys = points.map(function (p) { return p[1]; });
+  const xmin = Math.min.apply(null, xs), xmax = Math.max.apply(null, xs);
+  const ymin = Math.min.apply(null, ys), ymax = Math.max.apply(null, ys);
+  const sx = function (v) {
+    return marge + (largeur - marge - 8) * (xmax === xmin ? 0 : (v - xmin) / (xmax - xmin));
+  };
+  const hautTrace = 24;
+  const sy = function (v) {
+    return (hauteur - marge) - (hauteur - marge - hautTrace) * (ymax === ymin ? 0 : (v - ymin) / (ymax - ymin));
+  };
+  const trace = points.map(function (p, i) {
+    return (i === 0 ? "M" : "L") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1);
+  }).join(" ");
+  return '<svg viewBox="0 0 ' + largeur + ' ' + hauteur + '" width="100%" role="img">' +
+    '<line x1="' + marge + '" y1="' + hautTrace + '" x2="' + marge + '" y2="' + (hauteur - marge) + '" stroke="#cccccc"/>' +
+    '<line x1="' + marge + '" y1="' + (hauteur - marge) + '" x2="' + (largeur - 8) + '" y2="' + (hauteur - marge) + '" stroke="#cccccc"/>' +
+    '<path d="' + trace + '" fill="none" stroke="#1b5e3a" stroke-width="2"/>' +
+    '<text x="' + (largeur / 2) + '" y="' + (hauteur - 6) + '" font-size="11" fill="#666666" text-anchor="middle">' + options.x + '</text>' +
+    '<text x="10" y="14" font-size="11" fill="#666666">' + options.y + '</text>' +
     '</svg>';
 }
 
 function apprecier(k) {
-  if (k < 5) return "Facile";
-  if (k < 12) return "Moyen";
+  if (k < 5) { return "Facile"; }
+  if (k < 12) { return "Moyen"; }
   return "Difficile";
 }
-
 function phraseDifficulte(k) {
-  if (k < 5) return "Le calcul est bien posé, le résultat est fiable et rapide à obtenir.";
-  if (k < 12) return "Le calcul reste maîtrisé. Augmentez la stabilité du modèle pour le rendre plus facile.";
-  return "Les facteurs se ressemblent trop, ce qui rend le résultat sensible au moindre écart. Augmentez la stabilité du modèle.";
+  if (k < 5) { return "Le calcul est bien posé, le résultat est fiable et rapide à obtenir."; }
+  if (k < 12) { return "Le calcul reste maîtrisé. Augmentez la stabilité pour le rendre plus facile."; }
+  return "Les facteurs se ressemblent trop, ce qui rend le résultat sensible au moindre écart.";
 }
 
-function afficher(r) {
-  const corpsPoids = document.querySelector("#table_poids tbody");
-  corpsPoids.innerHTML = r.beta.map(function (b, i) {
-    const effet = b >= 0 ? "fait monter la facture" : "fait baisser la facture";
-    return "<tr><td>" + noms[i] + "</td><td>" + b + "</td><td>" + effet + "</td></tr>";
+const donnees = genererDonnees(200, GRAINE);
+const valeursPropres = (function () {
+  const A = matriceGram(donnees.X).map(function (r) {
+    return r.map(function (v) { return v / donnees.n; });
+  });
+  return valeursPropresJacobi(A);
+})();
+
+const elements = {
+  temperature: document.getElementById("temperature"),
+  personnes: document.getElementById("personnes"),
+  confort: document.getElementById("confort"),
+  lambda: document.getElementById("lambda"),
+  alpha: document.getElementById("alpha")
+};
+
+function recalculer() {
+  const temperatureExterieure = parseFloat(elements.temperature.value);
+  const personnes = parseFloat(elements.personnes.value);
+  const indiceConfort = parseInt(elements.confort.value, 10);
+  const lam = parseFloat(elements.lambda.value);
+  const alpha = parseFloat(elements.alpha.value);
+
+  document.getElementById("val_temperature").textContent = nb(temperatureExterieure, 0) + " degrés";
+  document.getElementById("val_personnes").textContent = nb(personnes, 0);
+  document.getElementById("val_confort").textContent = CONFORTS[indiceConfort].nom;
+  document.getElementById("aide_confort").textContent = CONFORTS[indiceConfort].aide;
+  document.getElementById("val_lambda").textContent = nb(lam, 2);
+  document.getElementById("val_alpha").textContent = nb(alpha, 2);
+
+  const beta = equationsNormales(donnees, lam);
+  const resultat = planRecommande(donnees, beta, temperatureExterieure, personnes, indiceConfort);
+
+  document.getElementById("facture_normale").textContent = nb(resultat.totalNormal);
+  document.getElementById("precision_normale").textContent =
+    "Consommation de la journée si le bâtiment fonctionne comme d'habitude.";
+  document.getElementById("economie_kwh").textContent = nb(resultat.economie);
+  document.getElementById("economie_pct").textContent = "soit " + nb(resultat.pourcent) + " % de moins";
+  document.getElementById("precision_economie").textContent =
+    "La facture tombe à " + nb(resultat.totalOptimal) + " kWh en suivant le plan ci-dessous.";
+
+  const heuresEconomie = resultat.lignes.filter(function (l) { return l.mode === "economie"; }).length;
+  document.querySelector("#table_plan tbody").innerHTML = resultat.lignes.map(function (l) {
+    const action = l.mode === "economie"
+      ? "Réduire la climatisation et regrouper les postes"
+      : "Maintenir le confort, forte présence";
+    return "<tr><td>" + l.heure + " h</td><td>" + action + "</td>" +
+      '<td class="nombre">' + nb(l.conso) + " kWh</td></tr>";
   }).join("");
+  document.getElementById("lecture_plan").innerHTML =
+    "Sur les six créneaux de la journée, <strong>" + heuresEconomie +
+    "</strong> peuvent passer en mode économie sans gêner les occupants.";
+
+  const parDegre = 6 * beta[1] / donnees.ecarts[1];
+  const parPersonne = 6 * beta[2] / donnees.ecarts[2];
+  document.querySelector("#table_facteurs tbody").innerHTML =
+    "<tr><td>La température extérieure</td><td>environ " + nb(parDegre) +
+      " kWh de plus par degré supplémentaire</td></tr>" +
+    "<tr><td>Le nombre de personnes</td><td>environ " + nb(parPersonne) +
+      " kWh de plus par personne supplémentaire</td></tr>" +
+    "<tr><td>L'heure de la journée</td><td>la consommation monte régulièrement de la matinée vers le soir</td></tr>";
 
   let iMax = 0;
-  for (let i = 1; i < r.beta.length; i++) {
-    if (Math.abs(r.beta[i]) > Math.abs(r.beta[iMax])) { iMax = i; }
+  for (let i = 1; i < beta.length; i++) {
+    if (Math.abs(beta[i]) > Math.abs(beta[iMax])) { iMax = i; }
   }
-  const total = r.beta.reduce(function (s, b) { return s + Math.abs(b); }, 0);
-  const part = total > 0 ? Math.round(100 * Math.abs(r.beta[iMax]) / total) : 0;
-  document.getElementById("lecture_poids").innerHTML =
-    "C'est <strong>" + nomsLongs[iMax] + "</strong> qui pèse le plus sur la facture, " +
-    "soit environ <strong>" + part + " %</strong> de l'influence totale mesurée.";
+  let totalPoids = 0;
+  for (let i = 0; i < beta.length; i++) { totalPoids += Math.abs(beta[i]); }
+  const part = totalPoids > 0 ? Math.round(100 * Math.abs(beta[iMax]) / totalPoids) : 0;
+  document.getElementById("lecture_facteurs").innerHTML =
+    "C'est <strong>" + NOMS[iMax].toLowerCase() +
+    "</strong> qui pèse le plus sur votre facture, soit environ <strong>" + part +
+    " %</strong> de l'influence totale mesurée.";
 
-  document.getElementById("kappa0").textContent = r.kappa0;
-  document.getElementById("kappaL").textContent = r.kappaL;
-  document.getElementById("verdict_kappa").textContent = apprecier(r.kappaL);
-  document.getElementById("lecture_kappa").textContent = phraseDifficulte(r.kappaL);
+  document.querySelector("#table_poids tbody").innerHTML = beta.map(function (b, i) {
+    return "<tr><td>" + NOMS[i] + '</td><td class="nombre">' + nb(b, 3) + "</td></tr>";
+  }).join("");
 
-  if (r.diverge) {
+  const kappa0 = valeursPropres[0] / valeursPropres[2];
+  const kappaL = (valeursPropres[0] + lam) / (valeursPropres[2] + lam);
+  document.getElementById("kappa0").textContent = nb(kappa0, 2);
+  document.getElementById("kappaL").textContent = nb(kappaL, 2);
+  document.getElementById("verdict_kappa").textContent = apprecier(kappaL);
+  document.getElementById("lecture_kappa").textContent = phraseDifficulte(kappaL);
+
+  const historique = descenteGradient(donnees, lam, alpha, 200);
+  const finis = historique.filter(function (c) { return Number.isFinite(c); });
+  const diverge = finis.length < historique.length || (finis.length > 1 && finis[finis.length - 1] > finis[0] * 5);
+  if (diverge) {
     document.getElementById("graph_conv").innerHTML = "";
     document.getElementById("conv_etat").innerHTML =
-      "<strong>Le calcul s'emballe et n'aboutit pas.</strong> La vitesse d'apprentissage est " +
-      "trop élevée. Réduisez le second curseur en dessous de 0.80.";
+      "<strong>Le calcul s'emballe et n'aboutit pas.</strong> Réduisez la vitesse " +
+      "d'apprentissage en dessous de 0,80.";
   } else {
-    const pts = r.conv.map(function (c, i) { return [i, c]; });
-    document.getElementById("graph_conv").innerHTML =
-      courbeSVG(pts, { x: "étapes", y: "erreur" });
+    const points = finis.slice(0, 120).map(function (c, i) { return [i, c]; });
+    document.getElementById("graph_conv").innerHTML = courbeSVG(points, { x: "étapes", y: "erreur" });
     document.getElementById("conv_etat").textContent =
       "L'erreur diminue à chaque étape puis se stabilise : le modèle a trouvé sa solution.";
   }
 
+  const courbeKappa = [];
+  for (let i = 0; i < 40; i++) {
+    const l = i / 39;
+    courbeKappa.push([l, (valeursPropres[0] + l) / (valeursPropres[2] + l)]);
+  }
   document.getElementById("graph_kappa").innerHTML =
-    courbeSVG(r.kappa_curve, { x: "stabilité du modèle", y: "difficulté" });
-
-  const corpsPlan = document.querySelector("#table_plan tbody");
-  corpsPlan.innerHTML = r.plan.map(function (p) {
-    const mode = p[1] === "economie" ? "Mode économie" : "Mode normal";
-    return "<tr><td>" + p[0] + " h</td><td>" + mode + "</td><td>" + p[2] + " kWh</td></tr>";
-  }).join("");
-
-  document.getElementById("bilan_kwh").textContent = r.eco + " kWh économisés";
-  document.getElementById("bilan_pct").textContent = "soit " + r.pct + " % de moins";
-  document.getElementById("bilan_detail").textContent =
-    "Sans optimisation, la journée consomme " + r.total_norm + " kWh. Avec le plan recommandé, " +
-    r.total_opt + " kWh, à confort égal pour les occupants.";
+    courbeSVG(courbeKappa, { x: "stabilité", y: "difficulté" });
 }
 
-function calculer() {
-  const lam = parseFloat(document.getElementById("lambda").value);
-  const alpha = parseFloat(document.getElementById("alpha").value);
-  try {
-    pyodide.globals.set("lam_in", lam);
-    pyodide.globals.set("alpha_in", alpha);
-    const sortie = pyodide.runPython("compute(lam_in, alpha_in)");
-    afficher(JSON.parse(sortie));
-    elEtat.textContent = "Résultats à jour.";
-  } catch (e) {
-    signalerErreur("Le calcul a échoué.", String(e));
-  }
-}
-
-document.getElementById("lambda").addEventListener("input", function (e) {
-  document.getElementById("val_lambda").textContent = parseFloat(e.target.value).toFixed(2);
+Object.keys(elements).forEach(function (cle) {
+  elements[cle].addEventListener("input", recalculer);
 });
-document.getElementById("alpha").addEventListener("input", function (e) {
-  document.getElementById("val_alpha").textContent = parseFloat(e.target.value).toFixed(2);
-});
-elBouton.addEventListener("click", calculer);
 
-async function demarrer() {
-  try {
-    progresser("Téléchargement du moteur Python, version " + VERSION_PYODIDE + ".", 15);
-    await chargerScript(BASE_PYODIDE + "pyodide.js");
-
-    if (typeof loadPyodide !== "function") {
-      throw new Error("Le fichier pyodide.js a été chargé mais la fonction loadPyodide est absente.");
-    }
-
-    progresser("Démarrage du moteur, cela peut prendre quelques secondes.", 40);
-    pyodide = await loadPyodide({ indexURL: BASE_PYODIDE });
-
-    progresser("Chargement de la bibliothèque de calcul NumPy.", 70);
-    await pyodide.loadPackage("numpy");
-
-    progresser("Préparation du modèle.", 90);
-    pyodide.runPython(codePython);
-
-    elBouton.disabled = false;
-    elBouton.textContent = "Lancer le calcul";
-    progresser("Moteur prêt. Réglez les curseurs puis lancez le calcul.", 100);
-
-    calculer();
-  } catch (e) {
-    signalerErreur(
-      "Le moteur Python n'a pas pu être téléchargé ou initialisé.",
-      String(e && e.stack ? e.stack : e)
-    );
-  }
-}
-
-demarrer();
+recalculer();
 </script>
 </body>
 </html>
