@@ -8,9 +8,11 @@
   :root {
     --vert: #1b5e3a;
     --vert_clair: #e7f0ea;
+    --vert_pale: #f4f8f5;
     --encre: #1a1a1a;
     --gris: #666666;
     --bord: #d9d9d9;
+    --rouge: #b03a2e;
   }
   * { box-sizing: border-box; }
   body {
@@ -18,171 +20,420 @@
     font-family: Georgia, "Times New Roman", serif;
     color: var(--encre);
     background: #ffffff;
-    line-height: 1.6;
+    line-height: 1.65;
   }
   header {
     background: var(--vert);
     color: #ffffff;
-    padding: 28px 24px;
+    padding: 34px 24px;
   }
-  header h1 { margin: 0 0 6px 0; font-size: 26px; }
-  header p { margin: 0; color: var(--vert_clair); font-size: 15px; }
-  main { max-width: 980px; margin: 0 auto; padding: 24px; }
-  .intro { font-size: 16px; color: var(--encre); }
+  .bandeau { max-width: 980px; margin: 0 auto; }
+  header h1 { margin: 0 0 8px 0; font-size: 28px; font-weight: normal; }
+  header p { margin: 0; color: var(--vert_clair); font-size: 16px; }
+  main { max-width: 980px; margin: 0 auto; padding: 8px 24px 24px 24px; }
+
   h2 {
     font-family: "Segoe UI", Arial, sans-serif;
     color: var(--vert);
     border-bottom: 2px solid var(--vert_clair);
-    padding-bottom: 6px;
-    margin-top: 34px;
+    padding-bottom: 8px;
+    margin-top: 44px;
+    margin-bottom: 4px;
     font-size: 20px;
   }
+  .intro p { font-size: 17px; margin: 18px 0; }
+  .intro .conduite { font-weight: bold; }
+
+  .avis {
+    background: var(--vert_pale);
+    border-left: 3px solid var(--vert);
+    padding: 14px 18px;
+    margin-top: 22px;
+    font-size: 15px;
+    color: var(--gris);
+  }
+
   .panneau {
     background: #fafafa;
     border: 1px solid var(--bord);
     border-radius: 8px;
-    padding: 20px;
-    margin-top: 16px;
+    padding: 22px;
+    margin-top: 18px;
   }
-  .controle { margin-bottom: 18px; }
+  .controle { margin-bottom: 26px; }
   .controle label {
     display: block;
     font-family: "Segoe UI", Arial, sans-serif;
     font-weight: 600;
-    margin-bottom: 6px;
-    font-size: 15px;
+    margin-bottom: 4px;
+    font-size: 16px;
+  }
+  .technique {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: normal;
+    color: var(--gris);
+    font-size: 13px;
   }
   .valeur { color: var(--vert); font-weight: 700; }
-  input[type=range] { width: 100%; accent-color: var(--vert); }
+  .aide {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    color: var(--gris);
+    margin: 6px 0 0 0;
+  }
+  input[type=range] { width: 100%; accent-color: var(--vert); margin: 4px 0; }
+
   button {
     font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     color: #ffffff;
     background: var(--vert);
     border: none;
     border-radius: 6px;
-    padding: 12px 22px;
+    padding: 13px 26px;
     cursor: pointer;
   }
   button:disabled { background: #9bb5a6; cursor: not-allowed; }
-  .grille {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    margin-top: 16px;
-  }
-  .carte {
-    border: 1px solid var(--bord);
-    border-radius: 8px;
-    padding: 16px;
-    background: #ffffff;
-  }
-  .carte h3 {
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin: 0 0 10px 0;
-    font-size: 16px;
-    color: var(--encre);
-  }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--bord); }
-  th { font-family: "Segoe UI", Arial, sans-serif; color: var(--gris); }
-  .gain {
-    background: var(--vert_clair);
-    border-radius: 8px;
-    padding: 16px;
-    font-size: 16px;
-    margin-top: 16px;
-  }
-  .gain strong { color: var(--vert); }
+
   .etat {
     font-family: "Segoe UI", Arial, sans-serif;
     color: var(--gris);
     font-size: 14px;
+    margin: 12px 0 0 0;
   }
-  .alerte { color: #b03a2e; font-weight: 700; }
+  .barre {
+    height: 6px;
+    background: var(--bord);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .barre_in {
+    height: 100%;
+    width: 0;
+    background: var(--vert);
+    transition: width 0.35s ease;
+  }
+  .erreur {
+    border: 1px solid var(--rouge);
+    border-left: 3px solid var(--rouge);
+    background: #fdf5f4;
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-top: 16px;
+    font-size: 15px;
+  }
+  .erreur_titre {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
+    color: var(--rouge);
+    margin: 0 0 8px 0;
+  }
+  .erreur p { margin: 0 0 8px 0; }
+  .erreur pre {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 12.5px;
+    background: #ffffff;
+    border: 1px solid var(--bord);
+    border-radius: 4px;
+    padding: 10px;
+    margin: 8px 0 0 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--encre);
+  }
+
+  .grille {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 18px;
+  }
+  .carte {
+    border: 1px solid var(--bord);
+    border-radius: 8px;
+    padding: 18px;
+    background: #ffffff;
+  }
+  .carte h3 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0 0 4px 0;
+    font-size: 17px;
+    color: var(--encre);
+  }
+  .carte .technique { display: block; margin-bottom: 12px; }
+  .lecture {
+    font-size: 15px;
+    background: var(--vert_pale);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin: 12px 0 0 0;
+  }
+  .lecture strong { color: var(--vert); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--bord); }
+  th { font-family: "Segoe UI", Arial, sans-serif; color: var(--gris); font-size: 13px; font-weight: 600; }
+
+  .verdict {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--vert);
+    margin: 2px 0 10px 0;
+  }
+
+  .bilan {
+    background: var(--vert_clair);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 18px;
+    text-align: center;
+  }
+  .bilan_chiffre {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--vert);
+    line-height: 1.2;
+  }
+  .bilan_pct {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--vert);
+    margin-top: 2px;
+  }
+  .bilan_detail { font-size: 15px; color: var(--gris); margin-top: 12px; }
+
+  ol.etapes { padding-left: 0; list-style: none; counter-reset: pas; margin-top: 18px; }
+  ol.etapes li {
+    counter-increment: pas;
+    position: relative;
+    padding-left: 52px;
+    margin-bottom: 20px;
+    min-height: 36px;
+  }
+  ol.etapes li::before {
+    content: counter(pas);
+    position: absolute;
+    left: 0; top: 0;
+    width: 34px; height: 34px;
+    background: var(--vert);
+    color: #ffffff;
+    border-radius: 50%;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ol.etapes h3 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    margin: 4px 0 4px 0;
+  }
+  ol.etapes p { margin: 0; font-size: 15px; }
+
+  ul.liens { list-style: none; padding: 0; margin-top: 18px; }
+  ul.liens li { margin-bottom: 14px; font-size: 15px; }
+  a { color: var(--vert); }
+
   footer {
     max-width: 980px; margin: 0 auto; padding: 24px;
-    color: var(--gris); font-size: 13px;
+    color: var(--gris); font-size: 13.5px;
     border-top: 1px solid var(--bord);
   }
   svg text { font-family: "Segoe UI", Arial, sans-serif; }
-  @media (max-width: 760px) { .grille { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) {
+    .grille { grid-template-columns: 1fr; }
+    .bilan_chiffre { font-size: 32px; }
+  }
 </style>
 </head>
 <body>
 <header>
-  <h1>Smart Energy Pilot</h1>
-  <p>Prédiction et pilotage de la facture d'électricité d'un bâtiment. Démonstration en ligne.</p>
+  <div class="bandeau">
+    <h1>Smart Energy Pilot</h1>
+    <p>Comprendre et réduire la facture d'électricité d'un bâtiment</p>
+  </div>
 </header>
 
 <main>
-  <p class="intro">
-    Cette page exécute le vrai code Python du projet, directement dans votre navigateur.
-    Réglez la pénalité et le pas d'apprentissage, lancez le calcul, et observez les poids
-    estimés, le conditionnement, la convergence, et le plan recommandé pour économiser
-    de l'électricité. Aucun logiciel à installer.
-  </p>
+  <section class="intro">
+    <p>
+      Le gérant d'un immeuble de bureaux voit sa facture d'électricité grimper mois après mois.
+      Il ignore ce qui la fait vraiment monter : l'heure de la journée, la température, le nombre
+      de personnes présentes. Sans cette réponse, impossible de savoir où agir.
+    </p>
+    <p>
+      Cet outil part de relevés de consommation réels. Il mesure le poids de chaque facteur sur
+      la facture, puis construit un plan de fonctionnement heure par heure qui réduit la
+      consommation sans changer le confort des occupants.
+    </p>
+    <p class="conduite">
+      Pour l'essayer, réglez les deux curseurs ci-dessous, lancez le calcul, puis lisez les résultats.
+    </p>
+    <p class="avis">
+      Tout le calcul se déroule directement dans votre navigateur : aucune donnée n'est envoyée
+      sur un serveur. Le moteur de calcul doit être téléchargé au premier affichage, ce qui prend
+      quelques secondes.
+    </p>
+  </section>
 
   <h2>Réglages</h2>
   <div class="panneau">
     <div class="controle">
-      <label>Pénalité lambda : <span class="valeur" id="val_lambda">0.10</span></label>
+      <label for="lambda">
+        Stabilité du modèle : <span class="valeur" id="val_lambda">0.10</span>
+        <span class="technique">terme technique : pénalité lambda</span>
+      </label>
       <input type="range" id="lambda" min="0" max="1" step="0.01" value="0.10">
+      <p class="aide">
+        Vers la droite, le modèle devient plus prudent et le calcul plus facile, mais il colle
+        moins finement aux données. Vous verrez la difficulté du calcul baisser et les poids
+        se resserrer.
+      </p>
     </div>
+
     <div class="controle">
-      <label>Pas d'apprentissage alpha : <span class="valeur" id="val_alpha">0.10</span></label>
+      <label for="alpha">
+        Vitesse d'apprentissage : <span class="valeur" id="val_alpha">0.10</span>
+        <span class="technique">terme technique : pas d'apprentissage alpha</span>
+      </label>
       <input type="range" id="alpha" min="0.01" max="1.2" step="0.01" value="0.10">
+      <p class="aide">
+        C'est la taille des pas que fait l'algorithme pour trouver la solution. Trop petits, il
+        avance lentement. Trop grands, au delà d'environ 0.80, il s'emballe et n'aboutit plus.
+      </p>
     </div>
-    <button id="lancer" disabled>Chargement du moteur Python en cours</button>
-    <p class="etat" id="etat"></p>
+
+    <button id="lancer" disabled>Préparation du moteur de calcul</button>
+    <p class="etat" id="etat">Démarrage.</p>
+    <div class="barre"><div class="barre_in" id="barre_in"></div></div>
+
+    <div class="erreur" id="erreur" hidden>
+      <p class="erreur_titre">Le moteur de calcul n'a pas pu démarrer.</p>
+      <p id="erreur_msg"></p>
+      <p>Vérifiez votre connexion, puis rechargez la page. Détail technique :</p>
+      <pre id="erreur_detail"></pre>
+    </div>
   </div>
 
   <h2>Résultats</h2>
   <div class="grille">
     <div class="carte">
-      <h3>Poids estimés</h3>
+      <h3>Ce qui fait varier la facture</h3>
+      <span class="technique">terme technique : poids estimés du modèle</span>
       <table id="table_poids">
-        <thead><tr><th>Variable</th><th>Poids</th></tr></thead>
+        <thead><tr><th>Facteur</th><th>Poids</th><th>Effet</th></tr></thead>
         <tbody></tbody>
       </table>
+      <p class="lecture" id="lecture_poids">En attente du calcul.</p>
     </div>
+
     <div class="carte">
-      <h3>Conditionnement</h3>
-      <p>Sans pénalité : <span class="valeur" id="kappa0">.</span></p>
-      <p>Avec la pénalité choisie : <span class="valeur" id="kappaL">.</span></p>
-      <p class="etat">Plus il est proche de un, plus l'apprentissage est stable.</p>
+      <h3>Difficulté du calcul</h3>
+      <span class="technique">terme technique : conditionnement</span>
+      <p class="verdict" id="verdict_kappa">En attente</p>
+      <table>
+        <tbody>
+          <tr><td>Sans stabilisation</td><td class="valeur" id="kappa0">.</td></tr>
+          <tr><td>Avec votre réglage</td><td class="valeur" id="kappaL">.</td></tr>
+        </tbody>
+      </table>
+      <p class="lecture" id="lecture_kappa">
+        Plus ce nombre est proche de un, plus le calcul est fiable et rapide.
+      </p>
     </div>
+
     <div class="carte">
-      <h3>Convergence de la descente de gradient</h3>
+      <h3>Progression du calcul</h3>
+      <span class="technique">terme technique : convergence de la descente de gradient</span>
       <div id="graph_conv"></div>
-      <p class="etat" id="conv_etat"></p>
+      <p class="lecture" id="conv_etat">En attente du calcul.</p>
     </div>
+
     <div class="carte">
-      <h3>La pénalité réduit le conditionnement</h3>
+      <h3>Effet de la stabilité sur la difficulté</h3>
+      <span class="technique">terme technique : conditionnement en fonction de lambda</span>
       <div id="graph_kappa"></div>
+      <p class="lecture">
+        La courbe descend : plus on stabilise le modèle, plus le calcul devient facile.
+      </p>
     </div>
   </div>
 
   <h2>Plan recommandé sur une journée type</h2>
   <div class="carte">
     <table id="table_plan">
-      <thead><tr><th>Heure</th><th>Mode</th><th>Consommation prévue (kWh)</th></tr></thead>
+      <thead><tr><th>Heure</th><th>Fonctionnement conseillé</th><th>Consommation prévue</th></tr></thead>
       <tbody></tbody>
     </table>
-    <div class="gain" id="gain"></div>
+    <div class="bilan">
+      <div class="bilan_chiffre" id="bilan_kwh">.</div>
+      <div class="bilan_pct" id="bilan_pct">.</div>
+      <p class="bilan_detail" id="bilan_detail">En attente du calcul.</p>
+    </div>
   </div>
+
+  <h2>Comment ça marche</h2>
+  <ol class="etapes">
+    <li>
+      <h3>Observer les données</h3>
+      <p>
+        L'outil part de relevés de consommation associés à trois informations simples :
+        l'heure, la température et le nombre d'occupants.
+      </p>
+    </li>
+    <li>
+      <h3>Apprendre la relation</h3>
+      <p>
+        Il cherche le poids de chaque facteur, c'est à dire dans quelle mesure chacun fait
+        monter ou descendre la consommation, en ajustant ces poids jusqu'à retrouver au mieux
+        les relevés observés.
+      </p>
+    </li>
+    <li>
+      <h3>Stabiliser le calcul</h3>
+      <p>
+        Certains facteurs évoluent ensemble, par exemple l'heure et la température, ce qui rend
+        le calcul instable. Une stabilisation est appliquée pour obtenir un résultat fiable et
+        reproductible.
+      </p>
+    </li>
+    <li>
+      <h3>Recommander un plan</h3>
+      <p>
+        Pour chaque heure de la journée, l'outil compare les fonctionnements possibles, retient
+        celui qui consomme le moins à confort équivalent, et chiffre l'économie obtenue.
+      </p>
+    </li>
+  </ol>
+
+  <h2>Pour aller plus loin</h2>
+  <ul class="liens">
+    <li>
+      <a href="../docs/rapport_ama.pdf">Rapport scientifique complet au format PDF</a>,
+      avec la démarche mathématique détaillée.
+    </li>
+    <li>
+      <a href="https://github.com/TRAORE352/smart_energy_pilot">Dépôt du projet sur GitHub</a>,
+      avec le code source et le carnet de calcul.
+    </li>
+  </ul>
 </main>
 
 <footer>
   <p>
     Projet mené dans le cadre du Programme d'Introduction à l'Intelligence Artificielle
-    de l'Académie des Mathématiques Appliquées. Le code complet et le rapport se trouvent
-    dans le dépôt du projet. Calcul réalisé avec Pyodide et NumPy.
+    de l'Académie des Mathématiques Appliquées. Calcul réalisé avec Pyodide et NumPy,
+    exécuté dans le navigateur.
   </p>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
 <script>
 const codePython = `
 import numpy as np, json
@@ -254,8 +505,45 @@ def compute(lam, alpha):
     })
 `;
 
+// Une seule source de vérité pour la version : le script et l'indexURL ne peuvent pas diverger.
+const VERSION_PYODIDE = "0.26.4";
+const BASE_PYODIDE = "https://cdn.jsdelivr.net/pyodide/v" + VERSION_PYODIDE + "/full/";
+
 const noms = ["Heure", "Température", "Occupants"];
+const nomsLongs = ["l'heure de la journée", "la température", "le nombre d'occupants"];
 let pyodide = null;
+
+const elEtat = document.getElementById("etat");
+const elBarre = document.getElementById("barre_in");
+const elErreur = document.getElementById("erreur");
+const elBouton = document.getElementById("lancer");
+
+function progresser(texte, pourcent) {
+  elEtat.textContent = texte;
+  elBarre.style.width = pourcent + "%";
+}
+
+function signalerErreur(message, detail) {
+  elEtat.textContent = "Démarrage interrompu.";
+  elBarre.style.width = "0";
+  document.getElementById("erreur_msg").textContent = message;
+  document.getElementById("erreur_detail").textContent = detail;
+  elErreur.hidden = false;
+  elBouton.textContent = "Moteur indisponible";
+  elBouton.disabled = true;
+}
+
+function chargerScript(url) {
+  return new Promise(function (resolve, reject) {
+    const balise = document.createElement("script");
+    balise.src = url;
+    balise.onload = function () { resolve(); };
+    balise.onerror = function () {
+      reject(new Error("Téléchargement impossible depuis " + url));
+    };
+    document.head.appendChild(balise);
+  });
+}
 
 function courbeSVG(points, options) {
   const l = 300, h = 180, m = 34;
@@ -274,64 +562,120 @@ function courbeSVG(points, options) {
     '</svg>';
 }
 
+function apprecier(k) {
+  if (k < 5) return "Facile";
+  if (k < 12) return "Moyen";
+  return "Difficile";
+}
+
+function phraseDifficulte(k) {
+  if (k < 5) return "Le calcul est bien posé, le résultat est fiable et rapide à obtenir.";
+  if (k < 12) return "Le calcul reste maîtrisé. Augmentez la stabilité du modèle pour le rendre plus facile.";
+  return "Les facteurs se ressemblent trop, ce qui rend le résultat sensible au moindre écart. Augmentez la stabilité du modèle.";
+}
+
 function afficher(r) {
   const corpsPoids = document.querySelector("#table_poids tbody");
-  corpsPoids.innerHTML = r.beta.map((b, i) => "<tr><td>" + noms[i] + "</td><td>" + b + "</td></tr>").join("");
+  corpsPoids.innerHTML = r.beta.map(function (b, i) {
+    const effet = b >= 0 ? "fait monter la facture" : "fait baisser la facture";
+    return "<tr><td>" + noms[i] + "</td><td>" + b + "</td><td>" + effet + "</td></tr>";
+  }).join("");
+
+  let iMax = 0;
+  for (let i = 1; i < r.beta.length; i++) {
+    if (Math.abs(r.beta[i]) > Math.abs(r.beta[iMax])) { iMax = i; }
+  }
+  const total = r.beta.reduce(function (s, b) { return s + Math.abs(b); }, 0);
+  const part = total > 0 ? Math.round(100 * Math.abs(r.beta[iMax]) / total) : 0;
+  document.getElementById("lecture_poids").innerHTML =
+    "C'est <strong>" + nomsLongs[iMax] + "</strong> qui pèse le plus sur la facture, " +
+    "soit environ <strong>" + part + " %</strong> de l'influence totale mesurée.";
 
   document.getElementById("kappa0").textContent = r.kappa0;
   document.getElementById("kappaL").textContent = r.kappaL;
+  document.getElementById("verdict_kappa").textContent = apprecier(r.kappaL);
+  document.getElementById("lecture_kappa").textContent = phraseDifficulte(r.kappaL);
 
   if (r.diverge) {
     document.getElementById("graph_conv").innerHTML = "";
     document.getElementById("conv_etat").innerHTML =
-      '<span class="alerte">Le pas est trop grand : l\\'algorithme diverge.</span> Réduisez alpha.';
+      "<strong>Le calcul s'emballe et n'aboutit pas.</strong> La vitesse d'apprentissage est " +
+      "trop élevée. Réduisez le second curseur en dessous de 0.80.";
   } else {
-    const pts = r.conv.map((c, i) => [i, c]);
-    document.getElementById("graph_conv").innerHTML = courbeSVG(pts, { x: "itération", y: "coût" });
-    document.getElementById("conv_etat").textContent = "Le coût diminue à chaque étape jusqu'au minimum.";
+    const pts = r.conv.map(function (c, i) { return [i, c]; });
+    document.getElementById("graph_conv").innerHTML =
+      courbeSVG(pts, { x: "étapes", y: "erreur" });
+    document.getElementById("conv_etat").textContent =
+      "L'erreur diminue à chaque étape puis se stabilise : le modèle a trouvé sa solution.";
   }
 
   document.getElementById("graph_kappa").innerHTML =
-    courbeSVG(r.kappa_curve, { x: "pénalité lambda", y: "conditionnement" });
+    courbeSVG(r.kappa_curve, { x: "stabilité du modèle", y: "difficulté" });
 
   const corpsPlan = document.querySelector("#table_plan tbody");
-  corpsPlan.innerHTML = r.plan.map(p =>
-    "<tr><td>" + p[0] + "h</td><td>" + (p[1] === "economie" ? "économie" : "normal") + "</td><td>" + p[2] + "</td></tr>"
-  ).join("");
+  corpsPlan.innerHTML = r.plan.map(function (p) {
+    const mode = p[1] === "economie" ? "Mode économie" : "Mode normal";
+    return "<tr><td>" + p[0] + " h</td><td>" + mode + "</td><td>" + p[2] + " kWh</td></tr>";
+  }).join("");
 
-  document.getElementById("gain").innerHTML =
-    "Sans optimisation : " + r.total_norm + " kWh. Plan recommandé : " + r.total_opt + " kWh. " +
-    "<strong>Économie de " + r.eco + " kWh, soit près de " + r.pct + " pour cent</strong>, à confort égal.";
+  document.getElementById("bilan_kwh").textContent = r.eco + " kWh économisés";
+  document.getElementById("bilan_pct").textContent = "soit " + r.pct + " % de moins";
+  document.getElementById("bilan_detail").textContent =
+    "Sans optimisation, la journée consomme " + r.total_norm + " kWh. Avec le plan recommandé, " +
+    r.total_opt + " kWh, à confort égal pour les occupants.";
 }
 
-async function calculer() {
+function calculer() {
   const lam = parseFloat(document.getElementById("lambda").value);
   const alpha = parseFloat(document.getElementById("alpha").value);
-  pyodide.globals.set("lam_in", lam);
-  pyodide.globals.set("alpha_in", alpha);
-  const sortie = pyodide.runPython("compute(lam_in, alpha_in)");
-  afficher(JSON.parse(sortie));
+  try {
+    pyodide.globals.set("lam_in", lam);
+    pyodide.globals.set("alpha_in", alpha);
+    const sortie = pyodide.runPython("compute(lam_in, alpha_in)");
+    afficher(JSON.parse(sortie));
+    elEtat.textContent = "Résultats à jour.";
+  } catch (e) {
+    signalerErreur("Le calcul a échoué.", String(e));
+  }
 }
 
-document.getElementById("lambda").addEventListener("input", e => {
+document.getElementById("lambda").addEventListener("input", function (e) {
   document.getElementById("val_lambda").textContent = parseFloat(e.target.value).toFixed(2);
 });
-document.getElementById("alpha").addEventListener("input", e => {
+document.getElementById("alpha").addEventListener("input", function (e) {
   document.getElementById("val_alpha").textContent = parseFloat(e.target.value).toFixed(2);
 });
-document.getElementById("lancer").addEventListener("click", calculer);
+elBouton.addEventListener("click", calculer);
 
 async function demarrer() {
-  const etat = document.getElementById("etat");
-  pyodide = await loadPyodide();
-  etat.textContent = "Chargement de NumPy.";
-  await pyodide.loadPackage("numpy");
-  pyodide.runPython(codePython);
-  const bouton = document.getElementById("lancer");
-  bouton.disabled = false;
-  bouton.textContent = "Lancer le calcul";
-  etat.textContent = "Moteur prêt. Réglez les curseurs puis lancez le calcul.";
-  calculer();
+  try {
+    progresser("Téléchargement du moteur Python, version " + VERSION_PYODIDE + ".", 15);
+    await chargerScript(BASE_PYODIDE + "pyodide.js");
+
+    if (typeof loadPyodide !== "function") {
+      throw new Error("Le fichier pyodide.js a été chargé mais la fonction loadPyodide est absente.");
+    }
+
+    progresser("Démarrage du moteur, cela peut prendre quelques secondes.", 40);
+    pyodide = await loadPyodide({ indexURL: BASE_PYODIDE });
+
+    progresser("Chargement de la bibliothèque de calcul NumPy.", 70);
+    await pyodide.loadPackage("numpy");
+
+    progresser("Préparation du modèle.", 90);
+    pyodide.runPython(codePython);
+
+    elBouton.disabled = false;
+    elBouton.textContent = "Lancer le calcul";
+    progresser("Moteur prêt. Réglez les curseurs puis lancez le calcul.", 100);
+
+    calculer();
+  } catch (e) {
+    signalerErreur(
+      "Le moteur Python n'a pas pu être téléchargé ou initialisé.",
+      String(e && e.stack ? e.stack : e)
+    );
+  }
 }
 
 demarrer();
